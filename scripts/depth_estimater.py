@@ -18,7 +18,7 @@ class depth_estimater:
         self.bridge = CvBridge()
         sub_rgb = message_filters.Subscriber("camera/rgb/image_raw",Image)
         sub_depth = message_filters.Subscriber("camera/depth/image_raw",Image)
-        self.mf = message_filters.ApproximateTimeSynchronizer([sub_rgb, sub_depth], 1, 0.5)
+        self.mf = message_filters.ApproximateTimeSynchronizer([sub_rgb, sub_depth], 100, 0.5)
         self.mf.registerCallback(self.ImageCallback)
  
     def ImageCallback(self, rgb_data , depth_data):
